@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>柯成橋 | Ke Cheng-Qiao — Engineering Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+TC:wght@300;400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f7f8fc;
+  --white: #ffffff;
+  --navy: #1a2340;
+  --blue: #2563eb;
+  --teal: #0891b2;
+  --teal-light: #06b6d4;
+  --amber: #d97706;
+  --green: #059669;
+  --red: #dc2626;
+  --purple: #7c3aed;
+  --text: #1e293b;
+  --text-mid: #475569;
+  --text-muted: #94a3b8;
+  --border: #e2e8f0;
+  --shadow: 0 4px 24px rgba(30,41,59,0.08);
+  --shadow-lg: 0 12px 48px rgba(30,41,59,0.14);
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--bg);color:var(--text);font-family:'Plus Jakarta Sans','Noto Sans TC',sans-serif;font-weight:400;line-height:1.75;overflow-x:hidden;}
+
+/* LANG BAR */
+.lang-bar{position:fixed;top:0;left:0;right:0;z-index:200;background:var(--white);border-bottom:1px solid var(--border);padding:0 48px;height:52px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 8px rgba(0,0,0,0.04);}
+.lang-logo{font-family:'JetBrains Mono',monospace;font-size:0.82rem;font-weight:500;color:var(--blue);letter-spacing:0.08em;text-decoration:none;cursor:pointer;}
+.lang-right{display:flex;align-items:center;gap:8px;}
+.lang-btn{padding:5px 14px;border-radius:6px;font-size:0.8rem;font-weight:600;cursor:pointer;border:1.5px solid var(--border);background:transparent;color:var(--text-mid);transition:all 0.2s;font-family:inherit;}
+.lang-btn.active{background:var(--blue);border-color:var(--blue);color:#fff;}
+.lang-btn:hover:not(.active){border-color:var(--blue);color:var(--blue);}
+
+/* NAV */
+nav{position:fixed;top:52px;left:0;right:0;z-index:100;background:rgba(255,255,255,0.93);backdrop-filter:blur(16px);border-bottom:1px solid var(--border);padding:0 48px;height:56px;display:flex;align-items:center;justify-content:space-between;}
+.nav-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1.1rem;color:var(--navy);}
+.nav-links{display:flex;gap:0;list-style:none;}
+.nav-links a{display:block;padding:0 16px;height:56px;line-height:56px;font-size:0.82rem;font-weight:600;color:var(--text-mid);text-decoration:none;letter-spacing:0.03em;transition:all 0.2s;border-bottom:3px solid transparent;position:relative;top:3px;}
+.nav-links a:hover{color:var(--blue);border-bottom-color:var(--blue);}
+
+section{scroll-margin-top:110px;}
+
+/* HERO */
+.hero{padding-top:108px;background:linear-gradient(150deg,#f0f7ff 0%,#f7f8fc 55%,#ecfdf5 100%);position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-80px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(37,99,235,0.07) 0%,transparent 70%);pointer-events:none;}
+.hero-inner{max-width:1100px;margin:0 auto;padding:60px 48px 68px;display:grid;grid-template-columns:auto 1fr;gap:52px;align-items:start;}
+.hero-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;}
+.hero-photo{width:140px;height:140px;border-radius:50%;border:4px solid var(--white);box-shadow:0 8px 32px rgba(37,99,235,0.18);background:linear-gradient(135deg,#dbeafe,#ccfbf1);display:flex;align-items:center;justify-content:center;font-size:3rem;overflow:hidden;}
+.hero-photo img{width:100%;height:100%;object-fit:cover;}
+.status-badge{display:flex;align-items:center;gap:6px;background:#ecfdf5;border:1px solid #a7f3d0;color:var(--green);border-radius:100px;padding:4px 12px;font-size:0.72rem;font-weight:700;white-space:nowrap;}
+.status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 1.8s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:0.3;}}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;background:#eff6ff;border:1px solid #bfdbfe;color:var(--blue);border-radius:100px;padding:5px 16px;font-size:0.78rem;font-weight:600;font-family:'JetBrains Mono',monospace;letter-spacing:0.05em;margin-bottom:16px;}
+h1.hero-name{font-family:'Playfair Display',serif;font-weight:800;font-size:clamp(2.4rem,5vw,3.8rem);line-height:1.1;color:var(--navy);margin-bottom:8px;letter-spacing:-0.02em;}
+.hero-subtitle{font-size:1rem;font-weight:500;color:var(--text-muted);margin-bottom:20px;letter-spacing:0.04em;}
+.hero-desc{font-size:0.97rem;color:var(--text-mid);line-height:1.85;max-width:560px;margin-bottom:28px;}
+.hero-meta{display:flex;flex-wrap:wrap;gap:16px;margin-bottom:32px;}
+.meta-item{display:flex;align-items:center;gap:8px;font-size:0.85rem;color:var(--text-mid);}
+.meta-icon{width:28px;height:28px;border-radius:7px;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:0.82rem;}
+.hero-btns{display:flex;gap:12px;flex-wrap:wrap;}
+.btn-primary{padding:11px 26px;background:var(--blue);color:#fff;border:none;border-radius:8px;font-size:0.87rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.2s;font-family:inherit;}
+.btn-primary:hover{background:var(--navy);transform:translateY(-1px);box-shadow:0 6px 20px rgba(37,99,235,0.28);}
+.btn-outline{padding:11px 26px;background:transparent;color:var(--text);border:1.5px solid var(--border);border-radius:8px;font-size:0.87rem;font-weight:600;cursor:pointer;text-decoration:none;transition:all 0.2s;font-family:inherit;}
+.btn-outline:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-1px);}
+
+/* STATS */
+.stats-row{background:var(--white);border-top:1px solid var(--border);border-bottom:1px solid var(--border);}
+.stats-inner{max-width:1100px;margin:0 auto;padding:0 48px;display:grid;grid-template-columns:repeat(4,1fr);}
+.stat-item{padding:26px 0;border-right:1px solid var(--border);text-align:center;}
+.stat-item:last-child{border-right:none;}
+.stat-num{font-family:'Playfair Display',serif;font-weight:700;font-size:2rem;color:var(--navy);line-height:1;margin-bottom:4px;}
+.stat-label{font-size:0.77rem;color:var(--text-muted);font-weight:500;}
+
+/* CONTENT */
+.content-area{max-width:1100px;margin:0 auto;padding:0 48px;}
+
+.sec-header{display:flex;align-items:center;gap:16px;margin:64px 0 36px;}
+.sec-icon{width:40px;height:40px;border-radius:10px;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.sec-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1.75rem;color:var(--navy);letter-spacing:-0.02em;}
+.sec-line{flex:1;height:1px;background:var(--border);}
+
+/* TIMELINE */
+.timeline{position:relative;}
+.timeline::before{content:'';position:absolute;left:18px;top:12px;bottom:12px;width:2px;background:linear-gradient(180deg,var(--blue),var(--teal),#e2e8f0);border-radius:2px;}
+.tl-item{display:grid;grid-template-columns:40px 1fr;gap:20px;margin-bottom:40px;opacity:0;transform:translateY(20px);transition:all 0.55s ease;}
+.tl-item.visible{opacity:1;transform:translateY(0);}
+.tl-dot-wrap{display:flex;flex-direction:column;align-items:center;padding-top:6px;}
+.tl-dot{width:16px;height:16px;border-radius:50%;background:var(--blue);border:3px solid var(--white);box-shadow:0 0 0 3px var(--blue);flex-shrink:0;position:relative;z-index:1;}
+.tl-dot.current{background:var(--green);box-shadow:0 0 0 3px #a7f3d0;animation:glow 2s infinite;}
+@keyframes glow{0%,100%{box-shadow:0 0 0 3px #a7f3d0;}50%{box-shadow:0 0 0 6px #a7f3d0;}}
+.tl-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px 28px;box-shadow:var(--shadow);transition:all 0.25s;}
+.tl-card:hover{border-color:#bfdbfe;box-shadow:var(--shadow-lg);transform:translateX(4px);}
+.tl-period{font-family:'JetBrains Mono',monospace;font-size:0.72rem;color:var(--blue);font-weight:500;letter-spacing:0.08em;margin-bottom:6px;text-transform:uppercase;}
+.tl-role{font-family:'Playfair Display',serif;font-size:1.22rem;font-weight:700;color:var(--navy);margin-bottom:3px;}
+.tl-company{font-size:0.87rem;color:var(--text-mid);margin-bottom:14px;font-weight:500;}
+.tl-bullets{list-style:none;margin-bottom:14px;}
+.tl-bullets li{display:flex;align-items:flex-start;gap:8px;font-size:0.88rem;color:var(--text-mid);line-height:1.7;margin-bottom:5px;}
+.tl-bullets li::before{content:'▸';color:var(--blue);flex-shrink:0;margin-top:2px;font-size:0.72rem;}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px;}
+.tag{padding:3px 10px;border-radius:5px;font-size:0.71rem;font-weight:600;font-family:'JetBrains Mono',monospace;letter-spacing:0.03em;}
+.tag-blue{background:#eff6ff;color:var(--blue);}
+.tag-teal{background:#ecfeff;color:var(--teal);}
+.tag-amber{background:#fffbeb;color:var(--amber);}
+.tag-green{background:#f0fdf4;color:var(--green);}
+.tag-slate{background:#f1f5f9;color:#64748b;}
+.tag-purple{background:#faf5ff;color:var(--purple);}
+
+/* GALLERY */
+.work-gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:16px;}
+.gallery-img{border-radius:8px;overflow:hidden;border:1px solid var(--border);aspect-ratio:16/10;background:var(--bg);}
+.gallery-img img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.3s;}
+.gallery-img:hover img{transform:scale(1.04);}
+.gallery-caption{font-size:0.7rem;color:var(--text-muted);text-align:center;margin-top:4px;}
+
+/* EC ARCH */
+.fw-arch{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:24px 28px;box-shadow:var(--shadow);margin-top:14px;}
+.fw-arch-inner{display:flex;flex-direction:column;gap:5px;max-width:320px;margin:0 auto;}
+.fw-block{border-radius:8px;padding:10px 16px;text-align:center;font-size:0.82rem;font-weight:600;border:1.5px solid;}
+.fw-block.host{background:#eff6ff;border-color:#93c5fd;color:var(--navy);}
+.fw-block.bios{background:#f0fdf4;border-color:#a7f3d0;color:var(--navy);}
+.fw-block.hw{background:#fffbeb;border-color:#fde68a;color:var(--navy);}
+.fw-block.ec{background:#faf5ff;border-color:#e9d5ff;color:var(--purple);}
+.fw-block.device{background:#fff1f2;border-color:#fca5a5;color:var(--navy);}
+.fw-arrow{text-align:center;font-size:1rem;color:var(--text-muted);line-height:1.4;}
+.fw-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:5px;margin:3px 0;}
+.fw-sub{border-radius:6px;padding:7px 8px;text-align:center;font-size:0.7rem;font-weight:600;border:1.5px solid #e2e8f0;background:#f8fafc;color:var(--text-mid);}
+.fw-labels{display:flex;justify-content:space-around;font-family:'JetBrains Mono',monospace;font-size:0.65rem;padding:2px 0;}
+
+/* HDR PIPELINE */
+.hdr-pipeline{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px 28px;box-shadow:var(--shadow);overflow-x:auto;margin-top:14px;}
+.pipeline-title{font-size:0.7rem;font-family:'JetBrains Mono',monospace;color:var(--text-muted);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:18px;}
+.pipeline-wrap{display:flex;align-items:flex-start;gap:0;min-width:720px;}
+.zone-wrap{display:flex;align-items:center;}
+.zone-label-vert{writing-mode:vertical-lr;transform:rotate(180deg);font-size:0.62rem;font-weight:700;letter-spacing:0.12em;text-transform:uppercase;padding:8px 5px;border-radius:5px;margin-right:8px;white-space:nowrap;font-family:'JetBrains Mono',monospace;align-self:stretch;display:flex;align-items:center;justify-content:center;}
+.z-os{background:#fffbeb;color:var(--amber);border:1px solid #fde68a;}
+.z-gpu{background:#eff6ff;color:var(--blue);border:1px solid #bfdbfe;}
+.z-disp{background:#f0fdf4;color:var(--green);border:1px solid #a7f3d0;}
+.pipe-nodes{display:flex;align-items:center;gap:0;}
+.pipe-node{display:flex;flex-direction:column;align-items:center;gap:4px;}
+.pipe-box{padding:8px 10px;border-radius:7px;font-size:0.72rem;font-weight:600;text-align:center;white-space:nowrap;border:1.5px solid;min-width:82px;font-family:'JetBrains Mono',monospace;}
+.pipe-box.normal{background:#f0fdf4;border-color:#a7f3d0;color:var(--green);}
+.pipe-box.mhc2{background:#ffe4e6;border-color:#fca5a5;color:var(--red);}
+.pipe-box.disp{background:#faf5ff;border-color:#e9d5ff;color:var(--purple);}
+.pipe-sub{font-size:0.62rem;color:var(--text-muted);text-align:center;font-family:'JetBrains Mono',monospace;max-width:82px;line-height:1.35;}
+.pipe-arrow{font-size:1rem;color:var(--text-muted);margin:0 4px;align-self:center;padding-bottom:18px;flex-shrink:0;}
+.zone-divider{width:1px;height:100%;background:var(--border);margin:0 8px;align-self:stretch;}
+
+/* HDR STEPS */
+.hdr-steps-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:18px;}
+.hdr-step{background:var(--bg);border:1px solid var(--border);border-radius:10px;padding:18px 20px;transition:all 0.25s;}
+.hdr-step:hover{background:var(--white);border-color:#bfdbfe;box-shadow:var(--shadow);}
+.hdr-step-num{font-family:'JetBrains Mono',monospace;font-size:0.67rem;color:var(--blue);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;}
+.hdr-step-title{font-weight:700;font-size:0.92rem;color:var(--navy);margin-bottom:6px;}
+.hdr-step-desc{font-size:0.82rem;color:var(--text-mid);line-height:1.65;}
+
+/* CALIBRATION FLOW */
+.calib-flow{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:0;background:var(--white);border:1px solid var(--border);border-radius:14px;padding:24px 28px;box-shadow:var(--shadow);margin-top:16px;}
+.calib-step{display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;padding:0 8px;}
+.calib-icon{width:58px;height:58px;border-radius:14px;display:flex;align-items:center;justify-content:center;font-size:1.5rem;border:1.5px solid;}
+.calib-arrow{font-size:1.5rem;color:var(--blue);margin:0 8px;padding-bottom:20px;align-self:center;}
+.calib-label{font-size:0.8rem;font-weight:700;color:var(--navy);max-width:100px;line-height:1.3;}
+.calib-sub{font-size:0.68rem;color:var(--text-muted);max-width:100px;line-height:1.35;}
+
+/* SKILLS */
+.skills-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;}
+.skill-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:22px 24px;box-shadow:var(--shadow);transition:all 0.25s;}
+.skill-card:hover{border-color:#bfdbfe;transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+.skill-card-header{display:flex;align-items:center;gap:10px;margin-bottom:14px;}
+.skill-emoji{width:36px;height:36px;border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;}
+.skill-cat{font-weight:700;font-size:0.92rem;color:var(--navy);}
+.skill-items{display:flex;flex-wrap:wrap;gap:6px;}
+
+/* EDU + CERTS */
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;}
+.edu-card{background:var(--white);border:1px solid var(--border);border-radius:14px;padding:28px;box-shadow:var(--shadow);display:flex;gap:18px;align-items:flex-start;transition:all 0.25s;}
+.edu-card:hover{border-color:var(--teal-light);box-shadow:var(--shadow-lg);}
+.edu-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--teal),var(--blue));display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+.edu-degree{font-family:'JetBrains Mono',monospace;font-size:0.68rem;color:var(--teal);font-weight:500;letter-spacing:0.1em;text-transform:uppercase;margin-bottom:6px;}
+.edu-major{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;color:var(--navy);margin-bottom:4px;line-height:1.3;}
+.edu-school{font-size:0.84rem;color:var(--text-mid);margin-bottom:4px;}
+.edu-period{font-size:0.75rem;color:var(--text-muted);font-family:'JetBrains Mono',monospace;}
+.certs-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
+.cert-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:18px 20px;box-shadow:var(--shadow);transition:all 0.25s;display:flex;align-items:flex-start;gap:12px;}
+.cert-card:hover{border-color:#bfdbfe;box-shadow:var(--shadow-lg);}
+.cert-icon{width:38px;height:38px;border-radius:9px;background:#eff6ff;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0;}
+.cert-name{font-weight:700;font-size:0.85rem;color:var(--navy);margin-bottom:3px;}
+.cert-desc{font-size:0.75rem;color:var(--text-muted);line-height:1.45;}
+
+/* JOB TARGET */
+.target-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:16px;}
+.target-card{background:var(--white);border:1px solid var(--border);border-radius:12px;padding:20px 24px;box-shadow:var(--shadow);}
+.target-label{font-size:0.7rem;font-family:'JetBrains Mono',monospace;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:7px;}
+.target-val{font-weight:600;font-size:0.92rem;color:var(--navy);}
+.target-full{grid-column:span 2;}
+
+/* HOBBIES */
+.hobby-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:72px;}
+.hobby-pill{display:flex;align-items:center;gap:8px;padding:10px 20px;background:var(--white);border:1.5px solid var(--border);border-radius:100px;font-size:0.9rem;font-weight:500;transition:all 0.2s;cursor:default;}
+.hobby-pill:hover{border-color:var(--blue);color:var(--blue);transform:translateY(-2px);box-shadow:var(--shadow);}
+
+/* FOOTER */
+footer{background:var(--navy);color:rgba(255,255,255,0.7);text-align:center;padding:40px 48px;}
+.footer-name{font-family:'Playfair Display',serif;font-weight:700;font-size:1.2rem;color:#fff;margin-bottom:8px;}
+.footer-sub{font-family:'JetBrains Mono',monospace;font-size:0.72rem;letter-spacing:0.08em;opacity:0.55;}
+
+/* LANG */
+.lang-zh{display:block;}.lang-en{display:none;}
+.inline-zh{display:inline;}.inline-en{display:none;}
+body.en .lang-zh{display:none;}body.en .lang-en{display:block;}
+body.en .inline-zh{display:none;}body.en .inline-en{display:inline;}
+
+/* ANIMATION */
+.fade-in{opacity:0;transform:translateY(22px);transition:opacity 0.6s ease,transform 0.6s ease;}
+.fade-in.visible{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  .lang-bar,nav{padding:0 20px;}
+  .hero-inner{grid-template-columns:1fr;gap:24px;padding:40px 20px 48px;}
+  .stats-inner{grid-template-columns:repeat(2,1fr);padding:0 20px;}
+  .content-area{padding:0 20px;}
+  .skills-grid,.certs-grid,.edu-grid,.target-grid,.hdr-steps-grid{grid-template-columns:1fr;}
+  .nav-links{display:none;}
+  .work-gallery{grid-template-columns:1fr 1fr;}
+  .target-full{grid-column:span 1;}
+}
+@media(max-width:600px){
+  .work-gallery{grid-template-columns:1fr;}
+  .calib-flow{flex-direction:column;}
+  .calib-arrow{transform:rotate(90deg);padding-bottom:0;margin:4px 0;}
+  .pipeline-wrap{min-width:650px;}
+}
+</style>
+</head>
+<body>
+
+<!-- LANG BAR -->
+<div class="lang-bar">
+  <span class="lang-logo" onclick="window.scrollTo({top:0,behavior:'smooth'})">
+    <span class="inline-zh">KE.CHENGQIAO ↑ 回到頂部</span>
+    <span class="inline-en">KE.CHENGQIAO ↑ Back to Top</span>
+  </span>
+  <div class="lang-right">
+    <button class="lang-btn active" id="btn-zh" onclick="setLang('zh')">中文</button>
+    <button class="lang-btn" id="btn-en" onclick="setLang('en')">English</button>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-name">
+    <span class="lang-zh">柯成橋</span><span class="lang-en">Ke Cheng-Qiao</span>
+  </div>
+  <ul class="nav-links">
+    <li><a href="#experience"><span class="lang-zh">工作經歷</span><span class="lang-en">Experience</span></a></li>
+    <li><a href="#projects"><span class="lang-zh">專案項目</span><span class="lang-en">Projects</span></a></li>
+    <li><a href="#skills"><span class="lang-zh">技能專長</span><span class="lang-en">Skills</span></a></li>
+    <li><a href="#education"><span class="lang-zh">學歷認證</span><span class="lang-en">Education</span></a></li>
+    <li><a href="#target"><span class="lang-zh">求職條件</span><span class="lang-en">Job Target</span></a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-inner">
+    <div class="hero-photo-wrap">
+      <div class="hero-photo">👨‍💻</div>
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        <span class="lang-zh">在職中</span><span class="lang-en">Employed</span>
+      </div>
+    </div>
+    <div>
+      <div class="hero-tag">
+        <span class="lang-zh">🏭 台積電 製程工程師 · Apr. 2025 至今</span>
+        <span class="lang-en">🏭 TSMC Process Engineer · Apr. 2025 – Present</span>
+      </div>
+      <h1 class="hero-name">
+        <span class="lang-zh">柯成橋</span><span class="lang-en">Ke Cheng-Qiao</span>
+      </h1>
+      <div class="hero-subtitle">
+        <span class="lang-zh">Ke, Cheng-Qiao &nbsp;·&nbsp; 韌體 · 系統 · 製程工程師</span>
+        <span class="lang-en">柯成橋 &nbsp;·&nbsp; Firmware · System · Process Engineer</span>
+      </div>
+      <p class="hero-desc">
+        <span class="lang-zh">跨領域工程師，具備嵌入式韌體開發（ITE EC）、HDR 顯示系統校正及台積電半導體製程的完整實戰經歷。擅長底層硬體控制、自動化工具開發與跨部門技術協作，希望邁向高級工程師職位。</span>
+        <span class="lang-en">Cross-domain engineer with hands-on experience in embedded firmware (ITE EC), HDR display calibration systems, and semiconductor process engineering at TSMC. Skilled in low-level hardware control, automation tooling, and cross-functional collaboration. Targeting Senior Engineer roles.</span>
+      </p>
+      <div class="hero-meta">
+        <div class="meta-item"><div class="meta-icon">📧</div>kcq01010909@gmail.com</div>
+        <div class="meta-item"><div class="meta-icon">📱</div>0988-282-366</div>
+        <div class="meta-item"><div class="meta-icon">📍</div><span class="lang-zh">基隆市 · 可遷移北部</span><span class="lang-en">Keelung, Taiwan</span></div>
+        <div class="meta-item"><div class="meta-icon">🌐</div>TOEIC 630</div>
+      </div>
+      <div class="hero-btns">
+        <a href="#experience" class="btn-primary"><span class="lang-zh">查看完整經歷 →</span><span class="lang-en">View Experience →</span></a>
+        <a href="#skills" class="btn-outline"><span class="lang-zh">技能總覽</span><span class="lang-en">Tech Stack</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-row">
+  <div class="stats-inner">
+    <div class="stat-item">
+      <div class="stat-num">3+</div>
+      <div class="stat-label lang-zh">年工作經歷</div><div class="stat-label lang-en">Years Experience</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label lang-zh">頂尖科技公司</div><div class="stat-label lang-en">Top Tech Companies</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6+</div>
+      <div class="stat-label lang-zh">證照與認證</div><div class="stat-label lang-en">Certifications</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num" style="color:var(--green);font-size:1.5rem;">現職</div>
+      <div class="stat-label lang-zh">TSMC 製程工程師</div><div class="stat-label lang-en">TSMC Process Eng.</div>
+    </div>
+  </div>
+</div>
+
+<div class="content-area">
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="sec-header fade-in">
+    <div class="sec-icon">💼</div>
+    <h2 class="sec-title lang-zh">工作經歷</h2><h2 class="sec-title lang-en">Work Experience</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="timeline">
+
+    <!-- TSMC -->
+    <div class="tl-item fade-in">
+      <div class="tl-dot-wrap"><div class="tl-dot current"></div></div>
+      <div class="tl-card">
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TSMC_Logo.svg/320px-TSMC_Logo.svg.png"alt="TSMC" style="height:36px; object-fit:contain; float:right; margin-left:16px;">
+        <div class="tl-period">Apr. 2025 – Present</div>
+        <div class="tl-role lang-zh">製程工程師</div><div class="tl-role lang-en">Process Engineer</div>
+        <div class="tl-company">台灣積體電路製造股份有限公司（TSMC）· 台南市安定區</div>
+        <ul class="tl-bullets">
+          <li><span class="lang-zh">負責半導體製程工程，持續優化製程參數與良率提升</span><span class="lang-en">Responsible for semiconductor process engineering with focus on yield and process parameter optimization</span></li>
+          <li><span class="lang-zh">跨部門協作，推動製程持續改善與問題排除</span><span class="lang-en">Cross-functional collaboration driving continuous process improvement and issue resolution</span></li>
+        </ul>
+        <div class="tags">
+          <span class="tag tag-green">Semiconductor</span>
+          <span class="tag tag-green">Process Engineering</span>
+          <span class="tag tag-green">Yield Optimization</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASUS System Engineer -->
+    <div class="tl-item fade-in">
+      <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
+      <div class="tl-card">
+        <div class="tl-period">Aug. 2023 – Apr. 2025 &nbsp;·&nbsp; 1 yr 9 mo</div>
+        <div class="tl-role lang-zh">高級系統工程師（軟體研發）</div><div class="tl-role lang-en">Senior System Engineer (Software R&D)</div>
+        <div class="tl-company">華碩電腦股份有限公司（ASUS）· 台北市北投區</div>
+        <ul class="tl-bullets">
+          <li><span class="lang-zh">開發 Windows HDR 顯示校正系統，確保跨 Panel 色彩一致性</span><span class="lang-en">Developed Windows HDR display calibration system ensuring cross-panel color consistency</span></li>
+          <li><span class="lang-zh">使用 VBA 建立自動化資料分析模板，大幅提升工廠良率分析效率</span><span class="lang-en">Built automated VBA data analysis templates, significantly improving factory yield analysis efficiency</span></li>
+          <li><span class="lang-zh">導入 VESA 認證 HDR 標準至工廠量產流程；校正新機型 Panel 並解決量產異常</span><span class="lang-en">Implemented VESA-certified HDR standards into factory production; calibrated new model panels and resolved production anomalies</span></li>
+          <li><span class="lang-zh">開發 BIOS R/W 驗證機制，Debug 工廠測試軟體問題</span><span class="lang-en">Developed BIOS R/W verification mechanisms and debugged factory testing software issues</span></li>
+        </ul>
+        <div class="tags">
+          <span class="tag tag-blue">Visual C++</span>
+          <span class="tag tag-blue">Visual C#</span>
+          <span class="tag tag-blue">MFC</span>
+          <span class="tag tag-blue">VBA</span>
+          <span class="tag tag-blue">HDR Calibration</span>
+          <span class="tag tag-blue">Panel Analysis</span>
+          <span class="tag tag-blue">VESA HDR</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ASUS FW -->
+    <div class="tl-item fade-in">
+      <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--amber);box-shadow:0 0 0 3px #fde68a;"></div></div>
+      <div class="tl-card">
+	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/ASUS_Logo.svg/320px-ASUS_Logo.svg.png"alt="ASUS" style="height:32px; object-fit:contain; float:right; margin-left:16px;">
+	<div class="tl-period">Aug. 2022 – Jun. 2023 &nbsp;·&nbsp; 1 yr</div>
+	<div class="tl-role lang-zh">韌體工程師</div>
+        <div class="tl-company">華碩電腦股份有限公司（ASUS）· 台北市北投區</div>
+        <ul class="tl-bullets">
+          <li><span class="lang-zh">ITE EC 韌體開發；建立驅動工具協助 HW Team 進行 Sensor 觸發與 R/W 測試</span><span class="lang-en">ITE EC firmware development; built driver tools to support HW team sensor trigger and R/W testing</span></li>
+          <li><span class="lang-zh">配合 HW Team 設定 Notebook 系統動作（Power Btn、LED、Temp 管理、Fans 控制）</span><span class="lang-en">Collaborated with HW team to configure Notebook system behaviors (Power Btn, LED, Thermal mgmt, Fan control)</span></li>
+          <li><span class="lang-zh">主導 REALTEK 2nd Source 料源導入，完成 SPI Flash FW 更新與 GPIO Timing 量測驗證</span><span class="lang-en">Led REALTEK 2nd source migration; completed SPI Flash firmware flashing and GPIO timing verification</span></li>
+          <li><span class="lang-zh">使用 Acute TravelLogic 邏輯分析儀進行 eSPI 訊號解析與 Motherboard Debug</span><span class="lang-en">Used Acute TravelLogic logic analyzer for eSPI signal decoding and motherboard debugging</span></li>
+          <li><span class="lang-zh">Visual Studio MFC 開發測試工具，協助外部單位測試驗證</span><span class="lang-en">Developed Visual Studio MFC tools to assist external teams with testing and validation</span></li>
+        </ul>
+        <div class="tags">
+          <span class="tag tag-amber">Embedded C</span>
+          <span class="tag tag-amber">ITE EC</span>
+          <span class="tag tag-amber">SPI / eSPI</span>
+          <span class="tag tag-amber">GPIO Debug</span>
+          <span class="tag tag-amber">Logic Analyzer</span>
+          <span class="tag tag-amber">MFC Tool</span>
+        </div>
+
+        <!-- Work photos -->
+        <div class="work-gallery">
+          <div>
+            <div class="gallery-img"><img src="/mnt/user-data/uploads/1775496540928_image.png" alt="MB test" onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 Motherboard Test</div>'"></div>
+            <div class="gallery-caption lang-zh">主機板測試環境</div><div class="gallery-caption lang-en">Motherboard Test Setup</div>
+          </div>
+          <div>
+            <div class="gallery-img"><img src="/mnt/user-data/uploads/1775496545048_image.png" alt="HW wiring" onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 HW Wiring</div>'"></div>
+            <div class="gallery-caption lang-zh">硬體接線測試</div><div class="gallery-caption lang-en">Hardware Wiring Test</div>
+          </div>
+          <div>
+            <div class="gallery-img"><img src="/mnt/user-data/uploads/1775496550670_image.png" alt="Logic analyzer" onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 Logic Analyzer</div>'"></div>
+            <div class="gallery-caption lang-zh">邏輯分析儀 + 訊號探針</div><div class="gallery-caption lang-en">Logic Analyzer &amp; Probes</div>
+          </div>
+        </div>
+
+        <!-- EC Architecture -->
+        <div style="margin-top:20px;">
+          <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-zh">🔧 EC 韌體架構（Host ↔ BIOS ↔ EC ↔ Device）</div>
+          <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-en">🔧 EC Firmware Architecture (Host ↔ BIOS ↔ EC ↔ Device)</div>
+          <div class="fw-arch">
+            <div class="fw-arch-inner">
+              <div class="fw-block host">HOST（API）</div>
+              <div class="fw-labels"><span style="color:var(--red)">▼ CMD</span><span style="color:var(--blue)">▼ DATA</span></div>
+              <div class="fw-block bios">BIOS</div>
+              <div class="fw-arrow" style="font-size:0.7rem;color:var(--text-muted);">— LPC / eSPI —</div>
+              <div class="fw-block hw">HW &nbsp;—&nbsp; I/O Port</div>
+              <div class="fw-grid">
+                <div class="fw-sub">Input<br>Buffer</div>
+                <div class="fw-sub">Output<br>Buffer</div>
+                <div class="fw-sub">State</div>
+              </div>
+              <div class="fw-block ec">EC Code / FW</div>
+              <div class="fw-arrow">↕ I2C / SMBus</div>
+              <div class="fw-block device">Device (Sensor)</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Signal screenshots -->
+        <div style="margin-top:18px;">
+          <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-zh">📡 eSPI 訊號解析 + GPIO Timing 波形</div>
+          <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-en">📡 eSPI Signal Decode + GPIO Timing Waveform</div>
+          <div class="work-gallery">
+            <div>
+              <div class="gallery-img"><img src="/mnt/user-data/uploads/1775496553934_image.png" alt="eSPI decoded" onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 eSPI Decoded</div>'"></div>
+              <div class="gallery-caption lang-zh">eSPI 封包解碼</div><div class="gallery-caption lang-en">eSPI Packet Decode</div>
+            </div>
+            <div>
+              <div class="gallery-img"><img src="/mnt/user-data/uploads/1775496557178_image.png" alt="GPIO timing" onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 GPIO Timing</div>'"></div>
+              <div class="gallery-caption lang-zh">GPIO Timing 波形</div><div class="gallery-caption lang-en">GPIO Timing Waveform</div>
+            </div>
+            <div>
+              <div class="gallery-img"><img src="/mnt/user-data/uploads/1775496530111_image.png" alt="EC memory" onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 EC Memory</div>'"></div>
+              <div class="gallery-caption lang-zh">EC Memory Table</div><div class="gallery-caption lang-en">EC Memory Table</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- DPTC Tool -->
+        <div style="margin-top:16px;">
+          <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-zh">🛠 MFC 自製工具截圖 — DPTC Tool（0xCC/0xCD）</div>
+          <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-en">🛠 MFC In-house Tool — DPTC Tool (0xCC/0xCD)</div>
+          <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#f8fafc;">
+            <img src="/mnt/user-data/uploads/1775496537191_image.png" alt="DPTC Tool" style="width:100%;height:auto;display:block;max-height:200px;object-fit:contain;" onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 DPTC Tool Screenshot</div>'">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Teacher -->
+    <div class="tl-item fade-in">
+      <div class="tl-dot-wrap"><div class="tl-dot" style="background:#cbd5e1;box-shadow:0 0 0 3px #e2e8f0;"></div></div>
+      <div class="tl-card" style="background:var(--bg);">
+        <div class="tl-period lang-zh">學生時期兼職</div><div class="tl-period lang-en">Part-time · During Studies</div>
+        <div class="tl-role lang-zh">電子家教 &amp; 補習班教師</div><div class="tl-role lang-en">Electronics Tutor &amp; School Teacher</div>
+        <div class="tl-company lang-zh">協助學生理解電路基礎、實驗操作與程式設計</div>
+        <div class="tl-company lang-en">Assisted students with electronic circuits, lab experiments, and programming fundamentals</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="sec-header fade-in">
+    <div class="sec-icon">🔬</div>
+    <h2 class="sec-title lang-zh">專案項目</h2><h2 class="sec-title lang-en">Key Projects</h2>
+    <div class="sec-line"></div>
+  </div>
+
+  <!-- HDR Project -->
+  <div class="tl-card fade-in" style="margin-bottom:24px;">
+    <div class="tl-period">PROJECT 01 &nbsp;·&nbsp; ASUS Senior System Engineer 2023–2025</div>
+    <div class="tl-role lang-zh">Windows HDR 色彩校正系統開發</div>
+    <div class="tl-role lang-en">Windows HDR Color Calibration System</div>
+    <div class="tl-company lang-zh">確保影像在不同 Panel 上顏色依然準確 — 完整四步驟色彩管線</div>
+    <div class="tl-company lang-en">Ensuring color accuracy across different display panels — complete 4-step color pipeline</div>
+
+    <!-- Full GPU Pipeline -->
+    <div style="margin-top:18px;">
+      <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-zh">完整色彩處理管線（OS Layer → GPU → Display）</div>
+      <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-en">Complete Color Pipeline (OS Layer → GPU → Display)</div>
+      <div class="hdr-pipeline">
+        <div class="pipeline-title">// HDR COLOR CALIBRATION PIPELINE — OS → GPU → DISPLAY</div>
+        <div style="overflow-x:auto;padding-bottom:4px;">
+          <div class="pipeline-wrap">
+            <!-- OS -->
+            <div class="zone-wrap">
+              <div class="zone-label-vert z-os">OS</div>
+              <div class="pipe-nodes">
+                <div class="pipe-node">
+                  <div class="pipe-box normal" style="background:#fffbeb;border-color:#fde68a;color:var(--amber);">Source<br>(Framebuffer)</div>
+                  <div class="pipe-sub">Non-Linear RGB<br>[PQ, Rec2020]</div>
+                </div>
+              </div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <!-- GPU -->
+            <div class="zone-wrap">
+              <div class="zone-label-vert z-gpu">GPU</div>
+              <div class="pipe-nodes">
+                <div class="pipe-node">
+                  <div class="pipe-box normal">Degamma</div>
+                  <div class="pipe-sub">Linear RGB<br>[Rec2020]</div>
+                </div>
+                <div class="pipe-arrow">→</div>
+                <div class="pipe-node">
+                  <div class="pipe-box normal">RGB→XYZ</div>
+                  <div class="pipe-sub">Linear RGB<br>[Rec2020]</div>
+                </div>
+                <div class="pipe-arrow">→</div>
+                <div class="pipe-node">
+                  <div class="pipe-box mhc2">XYZ Adj.<br>MHC2 ★</div>
+                  <div class="pipe-sub">Linear RGB<br>[Rec2020]</div>
+                </div>
+                <div class="pipe-arrow">→</div>
+                <div class="pipe-node">
+                  <div class="pipe-box normal">XYZ→RGB</div>
+                  <div class="pipe-sub">Linear RGB<br>[Rec2020]</div>
+                </div>
+                <div class="pipe-arrow">→</div>
+                <div class="pipe-node">
+                  <div class="pipe-box normal">Wire Xfer</div>
+                  <div class="pipe-sub">Non-Linear<br>[PQ, Rec2020]</div>
+                </div>
+                <div class="pipe-arrow">→</div>
+                <div class="pipe-node">
+                  <div class="pipe-box mhc2">1D LUT<br>MHC2 ★</div>
+                  <div class="pipe-sub">Non-Linear<br>[PQ, Rec2020]</div>
+                </div>
+              </div>
+            </div>
+            <div class="pipe-arrow">→</div>
+            <!-- Display -->
+            <div class="zone-wrap">
+              <div class="zone-label-vert z-disp">Display</div>
+              <div class="pipe-nodes">
+                <div class="pipe-node">
+                  <div class="pipe-box disp">EOTF PQ</div>
+                  <div class="pipe-sub">Linear RGB<br>[Rec2020]</div>
+                </div>
+                <div class="pipe-arrow">→</div>
+                <div class="pipe-node">
+                  <div class="pipe-box disp">Gamut<br>Transform</div>
+                  <div class="pipe-sub">Linear RGB<br>[Panel native]</div>
+                </div>
+                <div class="pipe-arrow">→</div>
+                <div class="pipe-node">
+                  <div class="pipe-box disp">Inv. γ2.2</div>
+                  <div class="pipe-sub">Non-Linear<br>[Gamma 2.2]</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div style="font-size:0.68rem;color:var(--text-muted);margin-top:8px;font-family:'JetBrains Mono',monospace;">★ MHC2 = Microsoft HDR Color Calibration · .icm 校正矩陣套用點</div>
+      </div>
+    </div>
+
+    <!-- 4 Steps -->
+    <div style="margin-top:20px;">
+      <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:10px;" class="lang-zh">四步驟校正詳細說明</div>
+      <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:10px;" class="lang-en">4-Step Calibration Detail</div>
+      <div class="hdr-steps-grid">
+        <div class="hdr-step">
+          <div class="hdr-step-num">STEP 01 — Degamma &amp; XYZ · Value</div>
+          <div class="hdr-step-title lang-zh">解碼還原</div><div class="hdr-step-title lang-en">Decode &amp; Linearize</div>
+          <div class="hdr-step-desc lang-zh">將非線性 RGB 訊號去 Gamma（Degamma）轉為線性，再轉換至 CIE XYZ 標準色彩空間，取得準確的色彩亮度數值基準，作為後續校正的輸入。</div>
+          <div class="hdr-step-desc lang-en">Remove gamma from non-linear RGB to get linear light values, then convert to CIE XYZ color space to establish an accurate luminance baseline for downstream correction.</div>
+        </div>
+        <div class="hdr-step">
+          <div class="hdr-step-num">STEP 02 — .icm / MHC2 · Chromaticity</div>
+          <div class="hdr-step-title lang-zh">色彩校正（色度）</div><div class="hdr-step-title lang-en">Color Correction (Chromaticity)</div>
+          <div class="hdr-step-desc lang-zh">透過 .icm 檔內的 MHC2 矩陣調整補償 Panel 硬體色度偏差，修正色度漂移（讓紅是紅、藍是藍）以及白平衡偏移（D65 標準白點校正）。</div>
+          <div class="hdr-step-desc lang-en">Apply MHC2 matrix from .icm file to compensate panel hardware chromaticity deviations — correcting color shift (primary accuracy) and white point (D65 correction).</div>
+        </div>
+        <div class="hdr-step">
+          <div class="hdr-step-num">STEP 03 — Target RGB &amp; PQ · Encoding</div>
+          <div class="hdr-step-title lang-zh">重新打包（統一編碼）</div><div class="hdr-step-title lang-en">Re-pack (Unified Encoding)</div>
+          <div class="hdr-step-desc lang-zh">依據螢幕亮度上限（Nits）重新計算色彩數值，透過 PQ 曲線（SMPTE ST.2084）重新編碼，再經 HDMI/DP 傳輸線送往螢幕端。</div>
+          <div class="hdr-step-desc lang-en">Recalculate color values based on display peak luminance (Nits), re-encode via PQ curve (SMPTE ST.2084), then transmit through HDMI/DisplayPort to the display.</div>
+        </div>
+        <div class="hdr-step">
+          <div class="hdr-step-num">STEP 04 — EOTF &amp; Gamut · Rendering</div>
+          <div class="hdr-step-title lang-zh">螢幕顯像（最終還原）</div><div class="hdr-step-title lang-en">Display Rendering (Final Output)</div>
+          <div class="hdr-step-desc lang-zh">套用 EOTF 曲線解碼，透過色域映射將顏色對齊 Panel 的最大顯示範圍（Panel native Gamut），最終呈現校正後的準確影像。</div>
+          <div class="hdr-step-desc lang-en">Apply EOTF curve decoding, then gamut mapping aligns colors to the panel's native display gamut, producing the final calibrated and accurate image output.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Factory flow -->
+    <div style="margin-top:20px;">
+      <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:10px;" class="lang-zh">工廠量產校正流程</div>
+      <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:10px;" class="lang-en">Factory Production Calibration Flow</div>
+      <div class="calib-flow">
+        <div class="calib-step">
+          <div class="calib-icon" style="background:#eff6ff;border-color:#bfdbfe;">🖥️</div>
+          <div class="calib-label lang-zh">獲取校正數據</div><div class="calib-label lang-en">Acquire Calibration Data</div>
+          <div class="calib-sub lang-zh">色彩量測儀讀取 Panel 原始色彩值</div><div class="calib-sub lang-en">Colorimeter reads raw panel values</div>
+        </div>
+        <div class="calib-arrow">→</div>
+        <div class="calib-step">
+          <div class="calib-icon" style="background:#f0fdf4;border-color:#a7f3d0;">🏭</div>
+          <div class="calib-label lang-zh">取得生產數據</div><div class="calib-label lang-en">Gather Production Data</div>
+          <div class="calib-sub lang-zh">工廠量產線批次數據收集</div><div class="calib-sub lang-en">Batch data from production line</div>
+        </div>
+        <div class="calib-arrow">→</div>
+        <div class="calib-step">
+          <div class="calib-icon" style="background:#fffbeb;border-color:#fde68a;">📊</div>
+          <div class="calib-label lang-zh">VBA 分析 &amp; 良率確認</div><div class="calib-label lang-en">VBA Analysis &amp; Yield Check</div>
+          <div class="calib-sub lang-zh">自動化模板分析 · 確認良率達標</div><div class="calib-sub lang-en">Automated template · yield verification</div>
+        </div>
+      </div>
+      <!-- Factory flow diagram image -->
+      <div style="margin-top:12px;border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#f8fafc;">
+        <img src="/mnt/user-data/uploads/1775496561220_image.png" alt="Factory flow" style="width:100%;height:auto;display:block;" onerror="this.parentElement.style.display='none'">
+      </div>
+    </div>
+
+    <!-- Pipeline technical image -->
+    <div style="margin-top:16px;">
+      <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#f8fafc;">
+        <img src="/mnt/user-data/uploads/1775496604820_image.png" alt="HDR pipeline" style="width:100%;height:auto;display:block;" onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="gallery-caption lang-zh" style="margin-top:6px;">HDR 色彩管線技術參考圖（OS Layer → GPU → Display）</div>
+      <div class="gallery-caption lang-en" style="margin-top:6px;">HDR Color Pipeline Technical Diagram (OS Layer → GPU → Display)</div>
+    </div>
+
+    <!-- Calibration science image -->
+    <div style="margin-top:16px;">
+      <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#f8fafc;">
+        <img src="/mnt/user-data/uploads/1775496589164_image.png" alt="Color calibration science" style="width:100%;height:auto;display:block;" onerror="this.parentElement.style.display='none'">
+      </div>
+      <div class="gallery-caption lang-zh" style="margin-top:6px;">校正前後 CIE 色度圖對比 + PQ 曲線 + EOTF 響應</div>
+      <div class="gallery-caption lang-en" style="margin-top:6px;">Pre/post calibration CIE chromaticity + PQ curve + EOTF response</div>
+    </div>
+
+    <div class="tags" style="margin-top:16px;">
+      <span class="tag tag-blue">Visual C++ / C#</span>
+      <span class="tag tag-blue">MFC</span>
+      <span class="tag tag-blue">VBA</span>
+      <span class="tag tag-blue">HDR / MHC2</span>
+      <span class="tag tag-blue">.icm Calibration</span>
+      <span class="tag tag-blue">VESA HDR</span>
+      <span class="tag tag-blue">LabVIEW</span>
+    </div>
+  </div>
+
+  <!-- REALTEK Project -->
+  <div class="tl-card fade-in" style="margin-bottom:64px;">
+    <div class="tl-period">PROJECT 02 &nbsp;·&nbsp; ASUS Firmware Engineer 2022–2023</div>
+    <div class="tl-role lang-zh">REALTEK 第二料源 Firmware 導入</div><div class="tl-role lang-en">REALTEK 2nd Source Firmware Migration</div>
+    <div class="tl-company lang-zh">主導新料源驗證，確保雙料源穩定互換量產</div>
+    <div class="tl-company lang-en">Led second-source validation ensuring stable dual-source interchangeable production</div>
+    <ul class="tl-bullets" style="margin-top:12px;">
+      <li><span class="lang-zh">焊接拉線，搭建 REALTEK 第二料源硬體測試環境</span><span class="lang-en">Soldering and wiring to build REALTEK 2nd source hardware test environment</span></li>
+      <li><span class="lang-zh">使用邏輯分析儀解析 SPI 訊號時序，驗證封包通訊完整性</span><span class="lang-en">Used logic analyzer to decode SPI signal timing and verify packet communication integrity</span></li>
+      <li><span class="lang-zh">完成 SPI Flash 韌體燒錄更新流程並驗證 GPIO Pin Timing 符合規格</span><span class="lang-en">Completed SPI Flash firmware flashing workflow and validated GPIO pin timing against specifications</span></li>
+      <li><span class="lang-zh">建立 Driver 程式協助外部單位完成驗證流程</span><span class="lang-en">Developed driver tools to assist external teams in completing the validation process</span></li>
+    </ul>
+    <div class="tags" style="margin-top:12px;">
+      <span class="tag tag-amber">Soldering</span>
+      <span class="tag tag-amber">SPI Flash</span>
+      <span class="tag tag-amber">GPIO Timing</span>
+      <span class="tag tag-amber">Logic Analyzer</span>
+      <span class="tag tag-amber">Driver Dev.</span>
+    </div>
+  </div>
+
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sec-header fade-in">
+    <div class="sec-icon">⚙️</div>
+    <h2 class="sec-title lang-zh">技能專長</h2><h2 class="sec-title lang-en">Tech Stack &amp; Skills</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="skills-grid fade-in">
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-emoji" style="background:#eff6ff;">💻</div>
+        <div class="skill-cat lang-zh">程式語言 / 軟體</div><div class="skill-cat lang-en">Programming / Software</div>
+      </div>
+      <div class="skill-items">
+        <span class="tag tag-blue">C / C++</span>
+        <span class="tag tag-blue">C#</span>
+        <span class="tag tag-blue">Python (OpenCV)</span>
+        <span class="tag tag-blue">LabVIEW</span>
+        <span class="tag tag-blue">VBA</span>
+        <span class="tag tag-blue">Arduino</span>
+        <span class="tag tag-blue">PLC</span>
+        <span class="tag tag-blue">Docker</span>
+        <span class="tag tag-blue">Git</span>
+        <span class="tag tag-blue">MFC</span>
+        <span class="tag tag-blue">MS SQL</span>
+        <span class="tag tag-blue">Power BI</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-emoji" style="background:#fffbeb;">🔧</div>
+        <div class="skill-cat lang-zh">硬體 / 測試儀器</div><div class="skill-cat lang-en">Hardware / Test Equipment</div>
+      </div>
+      <div class="skill-items">
+        <span class="tag tag-amber">焊接拉線</span>
+        <span class="tag tag-amber">Logic Analyzer</span>
+        <span class="tag tag-amber">SPI / eSPI</span>
+        <span class="tag tag-amber">I2C / SMBus</span>
+        <span class="tag tag-amber">GPIO Debug</span>
+        <span class="tag tag-amber">Sensor Testing</span>
+        <span class="tag tag-amber">BIOS R/W</span>
+        <span class="tag tag-amber">室內配線</span>
+        <span class="tag tag-amber">工業電子</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <div class="skill-card-header">
+        <div class="skill-emoji" style="background:#f0fdf4;">🔬</div>
+        <div class="skill-cat lang-zh">光學模擬 / 顯示技術</div><div class="skill-cat lang-en">Optics / Display Technology</div>
+      </div>
+      <div class="skill-items">
+        <span class="tag tag-green">TracePro</span>
+        <span class="tag tag-green">Zemax</span>
+        <span class="tag tag-green">HDR Calibration</span>
+        <span class="tag tag-green">Color Science</span>
+        <span class="tag tag-green">MHC2 / .icm</span>
+        <span class="tag tag-green">Panel Analysis</span>
+        <span class="tag tag-green">VESA HDR</span>
+        <span class="tag tag-green">PQ / EOTF</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="sec-header fade-in">
+    <div class="sec-icon">🎓</div>
+    <h2 class="sec-title lang-zh">學歷</h2><h2 class="sec-title lang-en">Education</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="edu-grid fade-in">
+    <div class="edu-card">
+      <div class="edu-icon">🎓</div>
+      <div>
+        <div class="edu-degree lang-zh">碩士學位</div><div class="edu-degree lang-en">Master's Degree</div>
+        <div class="edu-major lang-zh">光電科學與工程學系<br>Optics and Photonics</div>
+        <div class="edu-major lang-en">Optics and Photonics<br>光電科學與工程學系</div>
+        <div class="edu-school">國立中央大學 National Central University (NCU)</div>
+        <div class="edu-period">2020/09 – 2022/09</div>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">📚</div>
+      <div>
+        <div class="edu-degree lang-zh">學士學位</div><div class="edu-degree lang-en">Bachelor's Degree</div>
+        <div class="edu-major lang-zh">電子工程學系<br>Electronic Engineering</div>
+        <div class="edu-major lang-en">Electronic Engineering<br>電子工程學系</div>
+        <div class="edu-school">國立勤益科技大學 NCUT</div>
+        <div class="edu-period">2016/08 – 2020/06</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Certs -->
+  <div style="margin-top:32px;">
+    <div style="font-size:0.72rem;font-weight:700;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;font-family:'JetBrains Mono',monospace;" class="lang-zh">相關證照 &amp; 認證</div>
+    <div style="font-size:0.72rem;font-weight:700;color:var(--text-muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:14px;font-family:'JetBrains Mono',monospace;" class="lang-en">Certifications &amp; Licenses</div>
+    <div class="certs-grid fade-in">
+      <div class="cert-card">
+        <div class="cert-icon">🖥️</div>
+        <div><div class="cert-name lang-zh">電腦硬體裝修乙級</div><div class="cert-name lang-en">Computer Hardware Repair (Level B)</div>
+          <div class="cert-desc lang-zh">微電腦及週邊設備故障測試、判斷與維修</div><div class="cert-desc lang-en">Microcomputer fault testing, diagnosis and repair</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🌐</div>
+        <div><div class="cert-name lang-zh">網路架設丙級</div><div class="cert-name lang-en">Network Installation (Level C)</div>
+          <div class="cert-desc lang-zh">網路佈線、元件安裝及應用軟體操作</div><div class="cert-desc lang-en">Network cabling, component installation</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">⚡</div>
+        <div><div class="cert-name lang-zh">工業電子丙級</div><div class="cert-name lang-en">Industrial Electronics (Level C)</div>
+          <div class="cert-desc lang-zh">電子單元組裝、焊接及功能測試</div><div class="cert-desc lang-en">Electronic assembly, soldering, functional testing</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🖨️</div>
+        <div><div class="cert-name lang-zh">經濟部 iPas 3D列印工程師初級</div><div class="cert-name lang-en">iPas 3D Printing Engineer (Associate)</div>
+          <div class="cert-desc lang-zh">經濟部能力鑑定 · 姓名：柯成橋</div><div class="cert-desc lang-en">Ministry of Economic Affairs · Ke Cheng-Qiao</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">💬</div>
+        <div><div class="cert-name">TOEIC 630</div>
+          <div class="cert-desc lang-zh">英文聽說讀寫中等程度</div><div class="cert-desc lang-en">Intermediate English proficiency (Listening, Speaking, Reading, Writing)</div></div>
+      </div>
+      <div class="cert-card">
+        <div class="cert-icon">🏫</div>
+        <div><div class="cert-name lang-zh">台灣大學 C++ 課程證書</div><div class="cert-name lang-en">NTU C++ Programming Certificate</div>
+          <div class="cert-desc">DATA STRUCTURE &amp; Advanced C++ Programming (Online)</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- JOB TARGET -->
+<section id="target">
+  <div class="sec-header fade-in">
+    <div class="sec-icon">🎯</div>
+    <h2 class="sec-title lang-zh">求職條件</h2><h2 class="sec-title lang-en">Job Target</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="target-grid fade-in">
+    <div class="target-card">
+      <div class="target-label lang-zh">希望職稱</div><div class="target-label lang-en">Target Title</div>
+      <div class="target-val lang-zh">高級工程師</div><div class="target-val lang-en">Senior Engineer</div>
+    </div>
+    <div class="target-card">
+      <div class="target-label lang-zh">可上班日</div><div class="target-label lang-en">Available From</div>
+      <div class="target-val">2026 / 07 / 01</div>
+    </div>
+    <div class="target-card">
+      <div class="target-label lang-zh">希望地點</div><div class="target-label lang-en">Preferred Location</div>
+      <div class="target-val lang-zh">台北、新北、桃園、新竹、台中</div>
+      <div class="target-val lang-en">Taipei / New Taipei / Taoyuan / Hsinchu / Taichung</div>
+    </div>
+    <div class="target-card">
+      <div class="target-label lang-zh">遠端工作</div><div class="target-label lang-en">Remote Work</div>
+      <div class="target-val" style="color:var(--green);">
+        <span class="lang-zh">✓ 有意願</span><span class="lang-en">✓ Open to Remote</span>
+      </div>
+    </div>
+    <div class="target-card target-full">
+      <div class="target-label lang-zh">希望職類 &amp; 產業</div><div class="target-label lang-en">Target Roles &amp; Industries</div>
+      <div style="display:flex;flex-wrap:wrap;gap:7px;margin-top:8px;">
+        <span class="tag tag-blue lang-zh">硬體研發工程師</span><span class="tag tag-blue lang-en">HW R&D Engineer</span>
+        <span class="tag tag-amber lang-zh">韌體工程師</span><span class="tag tag-amber lang-en">Firmware Engineer</span>
+        <span class="tag tag-green lang-zh">電子工程師</span><span class="tag tag-green lang-en">Electronics Engineer</span>
+        <span class="tag tag-slate lang-zh">軟體工程師</span><span class="tag tag-slate lang-en">Software Engineer</span>
+        <span class="tag tag-teal lang-zh">系統工程師</span><span class="tag tag-teal lang-en">System Engineer</span>
+        <span class="tag tag-purple lang-zh">電信通訊</span><span class="tag tag-purple lang-en">Telecom</span>
+        <span class="tag tag-purple lang-zh">IC設計</span><span class="tag tag-purple lang-en">IC Design</span>
+        <span class="tag tag-purple lang-zh">消費性電子</span><span class="tag tag-purple lang-en">Consumer Electronics</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOBBIES -->
+<section id="hobbies" style="padding-top:0;">
+  <div class="sec-header fade-in" style="margin-top:20px;">
+    <div class="sec-icon">🌟</div>
+    <h2 class="sec-title lang-zh">興趣嗜好</h2><h2 class="sec-title lang-en">Interests</h2>
+    <div class="sec-line"></div>
+  </div>
+  <div class="hobby-row fade-in">
+    <div class="hobby-pill">✈️ <span class="lang-zh">旅遊</span><span class="lang-en">Travel</span></div>
+    <div class="hobby-pill">💃 <span class="lang-zh">舞蹈</span><span class="lang-en">Dancing</span></div>
+    <div class="hobby-pill">📱 <span class="lang-zh">科技新知</span><span class="lang-en">Tech News</span></div>
+    <div class="hobby-pill">💪 <span class="lang-zh">健身</span><span class="lang-en">Work Out</span></div>
+  </div>
+</section>
+
+</div><!-- /content-area -->
+
+<footer>
+  <div class="footer-name lang-zh">柯成橋 · Ke Cheng-Qiao</div>
+  <div class="footer-name lang-en">Ke Cheng-Qiao · 柯成橋</div>
+  <div class="footer-sub">FIRMWARE · SYSTEM · PROCESS ENGINEER &nbsp;|&nbsp; ASUS → TSMC</div>
+</footer>
+
+<script>
+function setLang(lang) {
+  document.body.classList.toggle('en', lang === 'en');
+  document.getElementById('btn-zh').classList.toggle('active', lang === 'zh');
+  document.getElementById('btn-en').classList.toggle('active', lang === 'en');
+  try { localStorage.setItem('resume-lang', lang); } catch(e) {}
+}
+
+// Init
+try {
+  const saved = localStorage.getItem('resume-lang') || 'zh';
+  setLang(saved);
+} catch(e) { setLang('zh'); }
+
+// Scroll observer
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.08 });
+
+document.querySelectorAll('.fade-in, .tl-item').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

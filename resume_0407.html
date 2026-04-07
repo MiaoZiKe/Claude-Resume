@@ -50,7 +50,7 @@ section{scroll-margin-top:110px;}
 .hero::before{content:'';position:absolute;top:-80px;right:-100px;width:500px;height:500px;background:radial-gradient(circle,rgba(37,99,235,0.07) 0%,transparent 70%);pointer-events:none;}
 .hero-inner{max-width:1100px;margin:0 auto;padding:60px 48px 68px;display:grid;grid-template-columns:auto 1fr;gap:52px;align-items:start;}
 .hero-photo-wrap{display:flex;flex-direction:column;align-items:center;gap:12px;}
-.hero-photo{width:140px;height:140px;border-radius:50%;border:4px solid var(--white);box-shadow:0 8px 32px rgba(37,99,235,0.18);background:linear-gradient(135deg,#dbeafe,#ccfbf1);display:flex;align-items:center;justify-content:center;font-size:3rem;overflow:hidden;}
+.hero-photo{width:150px;height:195px;border-radius:16px;border:4px solid var(--white);box-shadow:0 8px 32px rgba(37,99,235,0.18);background:linear-gradient(135deg,#dbeafe,#ccfbf1);display:flex;align-items:center;justify-content:center;font-size:3rem;overflow:hidden;}
 .hero-photo img{width:100%;height:100%;object-fit:cover;}
 .status-badge{display:flex;align-items:center;gap:6px;background:#ecfdf5;border:1px solid #a7f3d0;color:var(--green);border-radius:100px;padding:4px 12px;font-size:0.72rem;font-weight:700;white-space:nowrap;}
 .status-dot{width:7px;height:7px;border-radius:50%;background:var(--green);animation:blink 1.8s infinite;}
@@ -269,7 +269,9 @@ body.en .inline-zh{display:none;}body.en .inline-en{display:inline;}
 <section class="hero" id="hero">
   <div class="hero-inner">
     <div class="hero-photo-wrap">
-      <div class="hero-photo">👨‍💻</div>
+     	<div class="hero-photo">
+ 		<img src="https://raw.githubusercontent.com/MiaoZiKe/Claude-Resume/main/2吋-半身.jpg" alt="柯成橋" onerror="this.style.display='none';this.parentElement.innerHTML='👨‍💻'">
+	</div>
       <div class="status-badge">
         <div class="status-dot"></div>
         <span class="lang-zh">在職中</span><span class="lang-en">Employed</span>
@@ -342,7 +344,7 @@ body.en .inline-zh{display:none;}body.en .inline-en{display:inline;}
     <div class="tl-item fade-in">
       <div class="tl-dot-wrap"><div class="tl-dot current"></div></div>
       <div class="tl-card">
-	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/TSMC_Logo.svg/320px-TSMC_Logo.svg.png"alt="TSMC" style="height:36px; object-fit:contain; float:right; margin-left:16px;">
+	<img src="https://raw.githubusercontent.com/MiaoZiKe/Claude-Resume/main/TSMC.png"alt="TSMC" style="height:120px; object-fit:contain; float:right; margin-left:28px;">
         <div class="tl-period">Apr. 2025 – Present</div>
         <div class="tl-role lang-zh">製程工程師</div><div class="tl-role lang-en">Process Engineer</div>
         <div class="tl-company">台灣積體電路製造股份有限公司（TSMC）· 台南市安定區</div>
@@ -362,6 +364,7 @@ body.en .inline-zh{display:none;}body.en .inline-en{display:inline;}
     <div class="tl-item fade-in">
       <div class="tl-dot-wrap"><div class="tl-dot"></div></div>
       <div class="tl-card">
+	<img src="https://raw.githubusercontent.com/MiaoZiKe/Claude-Resume/main/ASUS.png"alt="ASUS" style="height:84px; object-fit:contain; float:right; margin-left:16px;">
         <div class="tl-period">Aug. 2023 – Apr. 2025 &nbsp;·&nbsp; 1 yr 9 mo</div>
         <div class="tl-role lang-zh">高級系統工程師（軟體研發）</div><div class="tl-role lang-en">Senior System Engineer (Software R&D)</div>
         <div class="tl-company">華碩電腦股份有限公司（ASUS）· 台北市北投區</div>
@@ -387,7 +390,7 @@ body.en .inline-zh{display:none;}body.en .inline-en{display:inline;}
     <div class="tl-item fade-in">
       <div class="tl-dot-wrap"><div class="tl-dot" style="background:var(--amber);box-shadow:0 0 0 3px #fde68a;"></div></div>
       <div class="tl-card">
-	<img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/ASUS_Logo.svg/320px-ASUS_Logo.svg.png"alt="ASUS" style="height:32px; object-fit:contain; float:right; margin-left:16px;">
+	<img src="https://raw.githubusercontent.com/MiaoZiKe/Claude-Resume/main/ASUS.png"alt="ASUS" style="height:84px; object-fit:contain; float:right; margin-left:16px;">
 	<div class="tl-period">Aug. 2022 – Jun. 2023 &nbsp;·&nbsp; 1 yr</div>
 	<div class="tl-role lang-zh">韌體工程師</div>
         <div class="tl-company">華碩電腦股份有限公司（ASUS）· 台北市北投區</div>
@@ -407,22 +410,29 @@ body.en .inline-zh{display:none;}body.en .inline-en{display:inline;}
           <span class="tag tag-amber">MFC Tool</span>
         </div>
 
-        <!-- Work photos -->
-        <div class="work-gallery">
-          <div>
-            <div class="gallery-img"><img src="/mnt/user-data/uploads/1775496540928_image.png" alt="MB test" onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 Motherboard Test</div>'"></div>
-            <div class="gallery-caption lang-zh">主機板測試環境</div><div class="gallery-caption lang-en">Motherboard Test Setup</div>
-          </div>
-          <div>
-            <div class="gallery-img"><img src="/mnt/user-data/uploads/1775496545048_image.png" alt="HW wiring" onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 HW Wiring</div>'"></div>
-            <div class="gallery-caption lang-zh">硬體接線測試</div><div class="gallery-caption lang-en">Hardware Wiring Test</div>
-          </div>
-          <div>
-            <div class="gallery-img"><img src="/mnt/user-data/uploads/1775496550670_image.png" alt="Logic analyzer" onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 Logic Analyzer</div>'"></div>
-            <div class="gallery-caption lang-zh">邏輯分析儀 + 訊號探針</div><div class="gallery-caption lang-en">Logic Analyzer &amp; Probes</div>
-          </div>
-        </div>
-
+<!-- Work photos -->
+<div class="work-gallery" style="grid-template-columns:repeat(2,1fr);">
+  <div>
+    <div class="gallery-img" onclick="openLightbox(this.querySelector('img').src)" style="cursor:zoom-in;">
+      <img src="https://raw.githubusercontent.com/MiaoZiKe/Claude-Resume/main/Build%20Driver%20協助外單位進行驗證.png"
+           alt="MB test"
+           style="width:100%;height:100%;object-fit:contain;display:block;"
+           onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 Motherboard Test</div>'">
+    </div>
+    <div class="gallery-caption lang-zh">Build Driver 協助外單位進行驗證 示意圖</div>
+    <div class="gallery-caption lang-en">Motherboard Test Setup</div>
+  </div>
+  <div>
+    <div class="gallery-img" onclick="openLightbox(this.querySelector('img').src)" style="cursor:zoom-in;">
+      <img src="https://raw.githubusercontent.com/MiaoZiKe/Claude-Resume/main/Memory%20Table.png"
+           alt="Memory Table"
+           style="width:100%;height:100%;object-fit:contain;display:block;"
+           onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 Memory Table</div>'">
+    </div>
+    <div class="gallery-caption lang-zh">Memory Table 示意圖</div>
+    <div class="gallery-caption lang-en">Logic Analyzer &amp; Probes</div>
+  </div>
+</div>
         <!-- EC Architecture -->
         <div style="margin-top:20px;">
           <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-zh">🔧 EC 韌體架構（Host ↔ BIOS ↔ EC ↔ Device）</div>
@@ -446,36 +456,64 @@ body.en .inline-zh{display:none;}body.en .inline-en{display:inline;}
           </div>
         </div>
 
-        <!-- Signal screenshots -->
-        <div style="margin-top:18px;">
-          <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-zh">📡 eSPI 訊號解析 + GPIO Timing 波形</div>
-          <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-en">📡 eSPI Signal Decode + GPIO Timing Waveform</div>
-          <div class="work-gallery">
-            <div>
-              <div class="gallery-img"><img src="/mnt/user-data/uploads/1775496553934_image.png" alt="eSPI decoded" onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 eSPI Decoded</div>'"></div>
-              <div class="gallery-caption lang-zh">eSPI 封包解碼</div><div class="gallery-caption lang-en">eSPI Packet Decode</div>
-            </div>
-            <div>
-              <div class="gallery-img"><img src="/mnt/user-data/uploads/1775496557178_image.png" alt="GPIO timing" onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 GPIO Timing</div>'"></div>
-              <div class="gallery-caption lang-zh">GPIO Timing 波形</div><div class="gallery-caption lang-en">GPIO Timing Waveform</div>
-            </div>
-            <div>
-              <div class="gallery-img"><img src="/mnt/user-data/uploads/1775496530111_image.png" alt="EC memory" onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 EC Memory</div>'"></div>
-              <div class="gallery-caption lang-zh">EC Memory Table</div><div class="gallery-caption lang-en">EC Memory Table</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- DPTC Tool -->
-        <div style="margin-top:16px;">
-          <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-zh">🛠 MFC 自製工具截圖 — DPTC Tool（0xCC/0xCD）</div>
-          <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-en">🛠 MFC In-house Tool — DPTC Tool (0xCC/0xCD)</div>
-          <div style="border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#f8fafc;">
-            <img src="/mnt/user-data/uploads/1775496537191_image.png" alt="DPTC Tool" style="width:100%;height:auto;display:block;max-height:200px;object-fit:contain;" onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 DPTC Tool Screenshot</div>'">
-          </div>
-        </div>
+<!-- Signal screenshots -->
+<div style="margin-top:18px;">
+  <div style="font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-zh">📡 SPI Flash Update FW + 焊接拉線</div>
+  <div class="work-gallery" style="grid-template-columns:repeat(2,1fr);">
+    <div>
+      <div class="gallery-img" onclick="openLightbox(this.querySelector('img').src)" style="cursor:zoom-in;">
+        <img src="https://raw.githubusercontent.com/MiaoZiKe/Claude-Resume/main/SPI%20Flash%20Update%20FW.png"
+             alt="SPI Flash Update FW"
+             style="width:100%;height:100%;object-fit:contain;display:block;"
+             onerror="this.style.display='none';this.parentElement.style.background='#f1f5f9'">
       </div>
+      <div class="gallery-caption lang-zh">SPI Flash Update FW 示意圖</div>
+      <div class="gallery-caption lang-en">SPI Flash Update FW</div>
     </div>
+
+    <div>
+      <div class="gallery-img" onclick="openLightbox(this.querySelector('img').src)" style="cursor:zoom-in;">
+        <img src="https://raw.githubusercontent.com/MiaoZiKe/Claude-Resume/main/焊接拉線.png"
+             alt="焊接拉線"
+             style="width:100%;height:100%;object-fit:contain;display:block;"
+             onerror="this.style.display='none';this.parentElement.style.background='#f1f5f9'">
+      </div>
+      <div class="gallery-caption lang-zh">焊接拉線 示意圖</div>
+      <div class="gallery-caption lang-en">Soldering &amp; Wiring</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+<!-- DPTC Tool -->
+<div style="margin-top:16px;">
+  <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-zh">🛠 邏輯分析 + GPIO Pin</div>
+  <div style="font-size:0.8rem;font-weight:700;color:var(--navy);margin-bottom:8px;" class="lang-en">🛠 Logic Analyzer + GPIO Pin Timing</div>
+  <div class="work-gallery" style="grid-template-columns:repeat(2,1fr);">
+    <div>
+      <div class="gallery-img" onclick="openLightbox(this.querySelector('img').src)" style="cursor:zoom-in;">
+        <img src="https://raw.githubusercontent.com/MiaoZiKe/Claude-Resume/main/邏輯分析儀解析訊號.png"
+             alt="邏輯分析儀解析訊號"
+             style="width:100%;height:100%;object-fit:contain;display:block;"
+             onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 邏輯分析儀解析訊號</div>'">
+      </div>
+      <div class="gallery-caption lang-zh">邏輯分析儀解析訊號 示意圖</div>
+      <div class="gallery-caption lang-en">Logic Analyzer Signal Decode</div>
+    </div>
+    <div>
+      <div class="gallery-img" onclick="openLightbox(this.querySelector('img').src)" style="cursor:zoom-in;">
+        <img src="https://raw.githubusercontent.com/MiaoZiKe/Claude-Resume/main/GPIO%20Pin觀察Timing.png"
+             alt="GPIO Pin觀察Timing"
+             style="width:100%;height:100%;object-fit:contain;display:block;"
+             onerror="this.parentElement.innerHTML='<div style=padding:20px;color:#94a3b8;font-size:0.75rem;text-align:center>📷 GPIO Pin Timing</div>'">
+      </div>
+      <div class="gallery-caption lang-zh">GPIO Pin 觀察 Timing 示意圖</div>
+      <div class="gallery-caption lang-en">GPIO Pin Timing Waveform</div>
+    </div>
+  </div>
+</div>
 
     <!-- Teacher -->
     <div class="tl-item fade-in">
@@ -899,6 +937,55 @@ body.en .inline-zh{display:none;}body.en .inline-en{display:inline;}
   <div class="footer-name lang-en">Ke Cheng-Qiao · 柯成橋</div>
   <div class="footer-sub">FIRMWARE · SYSTEM · PROCESS ENGINEER &nbsp;|&nbsp; ASUS → TSMC</div>
 </footer>
+
+
+<!-- Lightbox -->
+<div id="lightbox"
+     onclick="closeLightbox()"
+     style="display:none;position:fixed;inset:0;background:rgba(0,0,0,0.5);z-index:9999;align-items:center;justify-content:center;cursor:zoom-out;">
+  <span onclick="closeLightbox()"
+        style="position:fixed;top:20px;right:28px;color:#fff;font-size:2rem;cursor:pointer;line-height:1;z-index:10000;">✕</span>
+  <img id="lightbox-img" src=""
+       style="max-width:60vw;max-height:60vh;border-radius:10px;object-fit:contain;transition:transform 0.15s ease;"
+       onclick="event.stopPropagation()">
+</div>
+
+<script>
+let lbScale = 1;
+
+function openLightbox(src) {
+  lbScale = 1;
+  const img = document.getElementById('lightbox-img');
+  img.src = src;
+  img.style.transform = 'scale(1)';
+  const lb = document.getElementById('lightbox');
+  lb.style.display = 'flex';
+  document.body.style.overflow = 'hidden';
+}
+
+function closeLightbox() {
+  document.getElementById('lightbox').style.display = 'none';
+  document.body.style.overflow = '';
+}
+
+// 滾輪縮放
+document.getElementById('lightbox').addEventListener('wheel', function(e) {
+  e.preventDefault();
+  const img = document.getElementById('lightbox-img');
+  if (e.deltaY < 0) {
+    lbScale = Math.min(lbScale + 0.15, 5);
+  } else {
+    lbScale = Math.max(lbScale - 0.15, 0.3);
+  }
+  img.style.transform = `scale(${lbScale})`;
+}, { passive: false });
+
+// ESC 關閉
+document.addEventListener('keydown', e => {
+  if (e.key === 'Escape') closeLightbox();
+});
+</script>
+
 
 <script>
 function setLang(lang) {
